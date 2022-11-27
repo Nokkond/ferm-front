@@ -20,7 +20,7 @@ import Login from "./components/popups/Login.vue";
     </div>
   </header>
 <!--    <Auth />-->
-    <Login />
+<!--    <Login />-->
 <!--    <CreateCard />-->
   <RouterView />
 </template>
