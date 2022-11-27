@@ -2,7 +2,7 @@
     <div class="product  mt-6 w-2/4 h-48 p-6 bg-white !rounded-md !border-black drop-shadow-md">
         <div class="flex">
             <div >
-                <img class="h-28 rounded-md filter" src="src/assets/carrot.jpg">
+                <img class="h-28 rounded-md filter" src="/src/assets/carrot.jpg">
                 <!--<img class="h-28 rounded-md" src="src/assets/cucumber.png">-->
 
             <div>Своя закупка</div>
@@ -18,7 +18,7 @@
             <div class="" style="height:8px; width:50%; background-color: rgb(0, 189, 126); border-radius: 10px"></div>
         </div>
         <div style="position: absolute; top: 20px; right: 20px" class="hover:drop-shadow-xl">
-            <img src="src/assets/plus.png" width="40px" class="filter2">
+            <img src="/src/assets/plus.png" width="40px" class="filter2">
         </div>
     </div>
 

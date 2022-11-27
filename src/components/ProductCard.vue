@@ -2,7 +2,7 @@
     <div class="product  mt-6 w-2/4 h-48 p-6 bg-white !rounded-md !border-black drop-shadow-md hover:drop-shadow-xl">
         <div class="flex">
             <div >
-                <img class="h-28 rounded-md" src="src/assets/carrot.jpg">
+                <img class="h-28 rounded-md" src="/src/assets/carrot.jpg">
                 <!--<img class="h-28 rounded-md" src="src/assets/cucumber.png">-->
 
             <div>Морковь фермерская</div>
