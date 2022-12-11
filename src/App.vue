@@ -4,9 +4,35 @@ import HelloWorld from './components/HelloWorld.vue'
 import Auth from './components/popups/Auth.vue'
 import CreateCard from "./components/popups/CreateCard.vue"
 import Login from "./components/popups/Login.vue";
+import { computed } from "vue";
+
+// computed(() => localStorage.getItem('token'))
+const closeAuth = 0;
+const tokenChecker = computed(() => localStorage.getItem('token'));
+// async function submit() {
+//     if (localStorage.getItem('login') && localStorage.getItem('password'))
+//     // console.log(this.$refs.form.login.value);
+//     const result = await fetch('http://51.250.6.54:8007/login', {
+//         method: 'POST',
+//         headers: {
+//             // 'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6InN0cmluZzIiLCJwYXNzd29yZCI6InN0cmluZyIsInVzZXJfaWQiOjN9.feeGeqY_zV9Ooq0bMfEPomBexD3Khpk9mm3YRICS6pM',
+//             'Content-Type': 'application/json'
+//         },
+//         // body: '{\n                "login": "string\u044B\u0432\u044B\u0432\u0430sadfasdf\u0430",\n                "password": "strin\u044B\u0432\u0430gasdfsadf",\n                "email": "strasdfa\u044B\u0432\u0430sdfing"\n}',
+//         body: JSON.stringify({
+//             'login': localStorage.getItem('login'),
+//             'password':  localStorage.getItem('password'),
+//         })
+//     });
+//     localStorage.setItem('token', result.token)
+//     localStorage.setItem('login', this.$refs.form.login)
+//     localStorage.setItem('password', this.$refs.form.password)
+//     // let result = await response.json();
+//     // alert(result.message);
+// }
 </script>
 
-<template>
+<template >
   <header>
     <div class="wrapper">
       <HelloWorld class="logo" msg="greenfeed" />
@@ -19,9 +45,9 @@ import Login from "./components/popups/Login.vue";
       </nav>
     </div>
   </header>
-<!--    <Auth />-->
+<!--    <Auth v-if="!tokenChecker " @remove="closeAuth = 1"/>-->
 <!--    <Login />-->
-<!--    <CreateCard />-->
+<!--    <CreateCard v-if="tokenChecker"/>-->
   <RouterView />
 </template>
 

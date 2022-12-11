@@ -1,26 +1,27 @@
 <template>
-    <div class="product  mt-6 w-2/4 h-48 p-6 bg-white !rounded-md !border-black drop-shadow-md">
-        <div class="flex">
-            <div >
-                <img class="h-28 rounded-md filter" src="/src/assets/carrot.jpg">
-                <!--<img class="h-28 rounded-md" src="src/assets/cucumber.png">-->
+<!--    <div class="product  mt-6 w-2/4 h-48 p-6 bg-white !rounded-md !border-black drop-shadow-md">-->
+<!--&lt;!&ndash;        <div class="flex">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div >&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="h-28 rounded-md " style="background-color: rgba(160,159,159,0.16) !important; width: 157px;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                <img class="h-28 rounded-md filter" src="/src/assets/carrot.jpg">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                &lt;!&ndash;<img class="h-28 rounded-md" src="src/assets/cucumber.png">&ndash;&gt;&ndash;&gt;-->
 
-            <div>Своя закупка</div>
+<!--&lt;!&ndash;            <div>Своя закупка</div>&ndash;&gt;-->
 
-            </div>
-            <div class="flex flex-col ml-6">
-                <div>Партия: ---</div>
-                <div>Цена: ---</div>
-            </div>
-        </div>
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="flex flex-col ml-6">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div>Партия: -&#45;&#45;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div>Цена: -&#45;&#45;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
 
-        <div class="w-full rounded-full" style="background-color: rgba(198,198,195,0.23); border-radius: 10px">
-            <div class="" style="height:8px; width:50%; background-color: rgb(0, 189, 126); border-radius: 10px"></div>
-        </div>
-        <div style="position: absolute; top: 20px; right: 20px" class="hover:drop-shadow-xl">
-            <img src="/src/assets/plus.png" width="40px" class="filter2">
-        </div>
-    </div>
+<!--&lt;!&ndash;        <div class="w-full rounded-full" style="background-color: rgba(198,198,195,0.23); border-radius: 10px">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="" style="height:8px; width:50%; background-color: rgb(0, 189, 126); border-radius: 10px"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div style="position: absolute; top: 20px; right: 20px" class="hover:drop-shadow-xl">&ndash;&gt;-->
+<!--&lt;!&ndash;            <img src="/src/assets/plus.png" width="40px" class="filter2">&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--    </div>-->
 
 </template>
 
@@ -58,11 +59,11 @@ export default {
 }
 
 .filter {
-    filter: brightness(50%) invert(1);
+    filter: brightness(30%);
 }
 
 .filter2 {
-    filter: grayscale(50%) sepia(100%) contrast(50%);
+    filter: grayscale(100%) sepia(100%) contrast(50%);
 }
 
 </style>

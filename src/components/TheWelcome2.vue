@@ -39,7 +39,13 @@ export default {
     },
     methods: {
         async getCards() {
-            let response = await fetch('http://51.250.6.54:8007/get_cards', {})
+            let response = await fetch('http://51.250.6.54:8007/get_cards_user', {
+                method: 'GET',
+                headers: {
+                    'Authorization': localStorage.getItem('token'),
+                    'Content-Type': 'application/json'
+                },
+            }).catch()
             this.cards = await response.json();
             // localStorage.setItem('token', result.token)
             console.log(this.cards);

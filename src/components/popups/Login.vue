@@ -38,6 +38,9 @@ export default {
                     'password':  this.$refs.form.password.value,
                 })
             });
+            localStorage.setItem('token', result.token)
+            localStorage.setItem('login', this.$refs.form.login)
+            localStorage.setItem('password', this.$refs.form.password)
             let result = await response.json();
             // alert(result.message);
         }
