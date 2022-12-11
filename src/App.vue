@@ -42,6 +42,7 @@ const tokenChecker = computed(() => localStorage.getItem('token'));
       <nav>
         <RouterLink to="/">Главная</RouterLink>
         <RouterLink to="/about">Настройки</RouterLink>
+        <RouterLink to="/invoice">Мои заявки</RouterLink>
       </nav>
     </div>
   </header>
