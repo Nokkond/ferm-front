@@ -43,6 +43,7 @@ export default {
             localStorage.setItem('password', this.$refs.form.password)
             let result = await response.json();
             // alert(result.message);
+            this.$emit('close');
         }
     },
 }

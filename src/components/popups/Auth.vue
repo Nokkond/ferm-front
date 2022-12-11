@@ -39,7 +39,7 @@ export default {
             });
             let result = await response.json();
             localStorage.setItem('token', result.token)
-            console.log(result);
+            console.log(result.token);
             this.$emit('close');
         }
     },
