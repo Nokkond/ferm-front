@@ -1,5 +1,5 @@
 <template>
-    <div class="product  mt-6 w-2/4 p-6 bg-white !rounded-md !border-black drop-shadow-md hover:drop-shadow-xl">
+    <div class="product  mt-6 p-6 bg-white !rounded-md !border-black drop-shadow-md hover:drop-shadow-xl">
         <div class="flex">
             <div >
                 <img class="h-28 rounded-md" src="/src/assets/carrot.jpg">
@@ -13,23 +13,16 @@
             <div class="flex flex-col ml-6">
                 <div v-if="amount">Партия: {{amount}}</div>
                 <div v-if="price">Цена: {{price}}р</div>
+                <div v-if="login">Продавец: {{login}}</div>
             </div>
         </div>
-        <form ref="form" v-on:submit.prevent="submit"  class="invoice"><span>Приобрести: {{price}}р</span><input id="amount" placeholder="введите количество" class="disabled:opacity-75 border-2 inp mr-4"/><button  class="border-2 m-6 bg-slate-50 inp">Купить</button></form>
-<!--            <progress max="10" value="8" class="progress w-full rounded-full h-2.5">-->
-<!--                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">-->
-<!--                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>-->
-<!--                </div>-->
-<!--            </progress>-->
+        <form ref="form" v-on:submit.prevent="submit" v-if="$route.path !== '/about'"  class="invoice"><span>Приобрести(кг):    </span><input id="amount" placeholder="введите количество" class="disabled:opacity-75 border-2 inp mr-4"/><button  class="border-2 m-6 bg-slate-50 inp">Купить</button></form>
 
         <div class="w-full rounded-full" style="background-color: rgba(198,198,195,0.23); border-radius: 10px">
             <div class="" style="height:8px; width:50%; background-color: rgb(0, 189, 126); border-radius: 10px" :style="{width: current_amount/amount*100 + '%'}"></div>
         </div>
+        <button v-if="$route.path === '/about'" v-on:click="deleteCard" style="position: absolute; top: 7px; right: 7px">X</button>
     </div>
-<!--    <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">-->
-<!--        <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>-->
-<!--    </div>-->
-
 </template>
 
 <script>
@@ -51,6 +44,10 @@ export default {
         id: {
             type: Number,
             default: 0,
+        },
+        login: {
+            type: String,
+            default: '',
         },
         main_photo: {
             type: String,
@@ -93,6 +90,20 @@ export default {
             console.log(this.$refs.form.amount);
             // localStorage.setItem('token', result.token)
             console.log(result);
+        },
+        async deleteCard() {
+            let response = await fetch('http://51.250.6.54:8007/delete_card', {
+                method: 'POST',
+                headers: {
+                    'Authorization': localStorage.getItem('token'),
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    'id': this.id
+                })
+            });
+            let result = await response.json();
+            console.log(result);
         }
     },
 }
@@ -104,13 +115,8 @@ progress {
  background-color: #2c3e50 !important;
 }
 .product {
-    width: 48%;
-    min-width: 320px;
-    /*border:  1px solid rgba(46,198,22,0.38) ;*/
-    margin-right: 1%;
-    margin-left: 1%;
-
-    /*background-color: rgba(140, 199, 130, 0.38);*/
+  width: 100% !important;
+  position: relative;
 }
 
 
@@ -119,12 +125,7 @@ progress {
 }
 
 
-@media (max-width: 768px) {
-    .product {
-        width: 100%;
-        margin-right: 0px !important;
-    }
-}
+
 
 .invoice {
     display: none;

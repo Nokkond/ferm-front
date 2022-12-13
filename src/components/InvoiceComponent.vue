@@ -1,11 +1,11 @@
 <script>
-import ProductCard from "./ProductCard.vue";
-import ProductCardCreater from "./ProductCardCreater.vue";
+import InvoiceCard from "./InvoiceCard.vue";
+import InvoiceCardCreater from "./InvoiceCardCreater.vue";
 // import { ref,onMounted, computed } from 'vue'
 export default {
     components: {
-        ProductCard,
-        ProductCardCreater,
+        InvoiceCard,
+        InvoiceCardCreater,
     },
 
 // let cards = ref([]);
@@ -32,7 +32,6 @@ export default {
 //     },100)
 // });
     mounted() {
-        console.log(this.$route.path);
         this.getCards();
         setTimeout(() => {
           this.timer = 1;
@@ -40,7 +39,15 @@ export default {
     },
     methods: {
         async getCards() {
-            let response = await fetch('http://51.250.6.54:8007/get_cards', {})
+            let response = await fetch('http://51.250.6.54:8007/get_invoice_user', {
+                method: 'POST',
+                headers: {
+                    'Authorization': localStorage.getItem('token'),
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                })
+            });
             this.cards = await response.json();
             // localStorage.setItem('token', result.token)
             console.log(this.cards);
@@ -50,42 +57,20 @@ export default {
 </script>
 
 <template>
-    <div>
-    <product-card-creater class="cards ml-6" @createCard="$emit('createCard')"/>
+    <div >
+    <invoice-card-creater/>
     <div v-if="cardComp.length"  class="flex flex-wrap cards">
-        <div v-for="(card, idx) in cardComp" :key="idx" class="product">
-            <product-card v-bind="card"/>
+        <div v-for="(card, idx) in cardComp" :key="idx">
+            <invoice-card v-bind="card"/>
         </div>
     </div>
-
-<!--        <product-card />-->
-<!--        <product-card />-->
-<!--        <product-card />-->
-<!--        <product-card />-->
-<!--        <product-card />-->
-<!--        <product-card />-->
-<!--        <product-card />-->
     </div>
 </template>
 
-<style scoped>
+<style>
 .cards {
     max-width: 1024px !important;
     margin-right: auto;
     margin-left: auto;
-}
-.product {
-    width: 48%;
-    /*border:  1px solid rgba(46,198,22,0.38) ;*/
-    margin-right: 1%;
-    margin-left: 1%;
-}
-
-@media (max-width: 768px) {
-    .product {
-        min-width: 320px;
-        width: 100% !important;
-        margin-right: 0px !important;
-    }
 }
 </style>

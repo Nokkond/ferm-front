@@ -4,6 +4,6 @@ import TheWelcome from '../components/TheWelcome.vue'
 
 <template>
   <main>
-    <TheWelcome />
+    <TheWelcome @createCard="$emit('createCard')"/>
   </main>
 </template>

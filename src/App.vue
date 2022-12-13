@@ -16,17 +16,37 @@ export default {
     data() {
         return {
             closeAuth: 0,
+            closeCreateCard: 0,
         }
     },
     computed: {
         closeAuthComp() {
             return this.closeAuth;
         },
+        // tokenChecker() {
+        //     if (localStorage.getItem('token') === 'undefined') return false
+        //     return localStorage.getItem('token');
+        // },
         tokenChecker() {
             if (localStorage.getItem('token') === 'undefined') return false
             return localStorage.getItem('token');
         }
     },
+    methods: {
+        checker() {
+            console.log('ау')
+        },
+        infCheck(){
+            setTimeout(() => {
+                if (localStorage.getItem('popup') === 1) this.closeCreateCard = 1;
+                if (localStorage.getItem('popup') === 0) this.closeCreateCard = 0;
+            }, 1000)
+            this.infCheck()
+        }
+    },
+    created() {
+        localStorage.setItem('popup', 0);
+    }
     // methods: {
     //     async submit() {
     //         if (localStorage.getItem('login') && localStorage.getItem('password')){
@@ -62,7 +82,7 @@ export default {
 
 </script>
 
-<template >
+<template>
   <header>
     <div class="wrapper">
       <HelloWorld class="logo" msg="greenfeed" />
@@ -71,14 +91,16 @@ export default {
         </div>
       <nav>
         <RouterLink to="/">Главная</RouterLink>
-        <RouterLink to="/about">Настройки</RouterLink>
+        <RouterLink to="/about">Размещенные заказы</RouterLink>
+        <RouterLink to="/invoice">Мои заявки на покупку</RouterLink>
+        <RouterLink to="/create">Создать закупку</RouterLink>
       </nav>
     </div>
   </header>
     <Auth v-if="!tokenChecker && !closeAuthComp" @close="closeAuth = 1"/>
 <!--    <Login />-->
-<!--    <CreateCard v-if="tokenChecker"/>-->
-  <RouterView />
+    <CreateCard v-if="closeCreateCard" />
+  <RouterView  @createCard='checker'/>
 </template>
 
 <style>

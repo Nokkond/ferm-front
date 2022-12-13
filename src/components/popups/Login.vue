@@ -11,7 +11,7 @@
                 <input id="password" class="disabled:opacity-75 border-2 inp" style="margin-bottom: 20px"/>
 
                 <button  class="border-2 mt-6 bg-slate-50 inp">
-                    Зарегистрироваться
+                    Войти
                 </button>
             </form>
         </div>

@@ -4,15 +4,15 @@
     <div class=" top-0 left-0 absolute z-45 h-full w-full">
         <div class="form-div" style="margin-right: auto; margin-left: auto;">
             <form ref="form" v-on:submit.prevent="submit" style="margin-top: 30vh;" class="flex flex-col text-center  z-50 mt-1/2  h-2/4 p-6 bg-white !rounded-md !border-black !drop-shadow-md !hover:drop-shadow-xl">
-                <div style="padding-bottom: 24px">Авторизируйтесь</div>
+                <div style="padding-bottom: 24px">Регистрация</div>
                 <div>Логин</div>
                 <input id="login" class="disabled:opacity-75 border-2 inp" />
                 <div>Пароль</div>
                 <input id="password" class="disabled:opacity-75 border-2 inp" />
                 <div>Почта</div>
                 <input id="email" class="disabled:opacity-75 border-2 inp" />
-                <button  class="border-2 mt-6 bg-slate-50 inp">
-                    Зарегистрироваться
+                <button class="border-2 mt-6 bg-slate-50 inp">
+                    Отправить
                 </button>
             </form>
         </div>
@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import router from "../../router";
+
 export default {
     name: "Auth",
     components: {},
@@ -40,6 +42,8 @@ export default {
             let result = await response.json();
             localStorage.setItem('token', result.token)
             console.log(result.token);
+            console.log(this.$router);
+            // this.$router.replace('/about');
             this.$emit('close');
         }
     },

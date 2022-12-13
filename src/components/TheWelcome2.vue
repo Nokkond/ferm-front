@@ -17,6 +17,7 @@ export default {
     data() {
         return {
             cards: [],
+            user: [],
             timer: 0,
         };
     },
@@ -33,6 +34,7 @@ export default {
 // });
     mounted() {
         this.getCards();
+        this.getInfoUser();
         setTimeout(() => {
           this.timer = 1;
         },1000)
@@ -49,6 +51,18 @@ export default {
             this.cards = await response.json();
             // localStorage.setItem('token', result.token)
             console.log(this.cards);
+        },
+        async getInfoUser() {
+            let response = await fetch('http://51.250.6.54:8007/get_info_user', {
+                method: 'POST',
+                headers: {
+                    'Authorization': localStorage.getItem('token'),
+                    'Content-Type': 'application/json'
+                },
+            }).catch()
+            this.user = await response.json();
+            // localStorage.setItem('token', result.token)
+            console.log(this.user);
         }
     }
 }
@@ -56,7 +70,8 @@ export default {
 
 <template>
     <div >
-    <product-card-creater/>
+        <div style="font-size: 20px; margin-top: 20px; margin-left: 10px" v-if="user">С возвращением, {{user.login}}!</div>
+        <div style="font-size: 20px; margin-top: 20px; margin-left: 10px" v-if="cardComp.length">Ваши размещенные заказы:</div>
     <div v-if="cardComp.length"  class="flex flex-wrap cards">
         <div v-for="(card, idx) in cardComp" :key="idx">
             <product-card v-bind="card"/>

@@ -44,7 +44,7 @@ export default {
                 })
             });
             let result = await response.json();
-            localStorage.setItem('token', result.token)
+            this.$router.push('/about')
             console.log(result);
         }
     },

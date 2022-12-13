@@ -1,44 +1,69 @@
 <template>
-<!--    <div class="product  mt-6 w-2/4 h-48 p-6 bg-white !rounded-md !border-black drop-shadow-md">-->
-<!--&lt;!&ndash;        <div class="flex">&ndash;&gt;-->
-<!--&lt;!&ndash;            <div >&ndash;&gt;-->
-<!--&lt;!&ndash;                <div class="h-28 rounded-md " style="background-color: rgba(160,159,159,0.16) !important; width: 157px;"></div>&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;                <img class="h-28 rounded-md filter" src="/src/assets/carrot.jpg">&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                &lt;!&ndash;<img class="h-28 rounded-md" src="src/assets/cucumber.png">&ndash;&gt;&ndash;&gt;-->
+    <div class="flex flex-row">
+    <button class="product  mt-6 bg-white !rounded-md !border-black drop-shadow-md" style="width: 2px !important; height: 2px" v-on:click="setPopupMut">
+<!--        <div class="flex">-->
+<!--            <div >-->
+<!--                <div class="h-28 rounded-md " style="background-color: rgba(160,159,159,0.16) !important; width: 157px;"></div>-->
+<!--&lt;!&ndash;                <img class="h-28 rounded-md filter" src="/src/assets/carrot.jpg">&ndash;&gt;-->
+<!--                &lt;!&ndash;<img class="h-28 rounded-md" src="src/assets/cucumber.png">&ndash;&gt;-->
 
-<!--&lt;!&ndash;            <div>Своя закупка</div>&ndash;&gt;-->
+<!--            <div>Своя закупка</div>-->
 
-<!--&lt;!&ndash;            </div>&ndash;&gt;-->
-<!--&lt;!&ndash;            <div class="flex flex-col ml-6">&ndash;&gt;-->
-<!--&lt;!&ndash;                <div>Партия: -&#45;&#45;</div>&ndash;&gt;-->
-<!--&lt;!&ndash;                <div>Цена: -&#45;&#45;</div>&ndash;&gt;-->
-<!--&lt;!&ndash;            </div>&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--            </div>-->
+<!--            <div class="flex flex-col ml-6">-->
+<!--                <div>Партия: ---</div>-->
+<!--                <div>Цена: ---</div>-->
+<!--            </div>-->
+<!--        </div>-->
 
-<!--&lt;!&ndash;        <div class="w-full rounded-full" style="background-color: rgba(198,198,195,0.23); border-radius: 10px">&ndash;&gt;-->
-<!--&lt;!&ndash;            <div class="" style="height:8px; width:50%; background-color: rgb(0, 189, 126); border-radius: 10px"></div>&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;        <div style="position: absolute; top: 20px; right: 20px" class="hover:drop-shadow-xl">&ndash;&gt;-->
-<!--&lt;!&ndash;            <img src="/src/assets/plus.png" width="40px" class="filter2">&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-<!--    </div>-->
-
+<!--        <div class="w-full rounded-full" style="background-color: rgba(198,198,195,0.23); border-radius: 10px">-->
+<!--            <div class="" style="height:8px; width:50%; background-color: rgb(0, 189, 126); border-radius: 10px"></div>-->
+<!--        </div>-->
+<!--        <div style="position: absolute; top: 20px; right: 20px" class="hover:drop-shadow-xl">-->
+<!--            <img src="/src/assets/plus.png" width="40px" class="filter2">-->
+<!--        </div>-->
+<!--        <div>+</div>-->
+        <div style="margin-top: -5px; font-size: 30px">+</div>
+    </button>
+    <div style="font-size: 20px; margin-top: 20px; margin-left: 10px">Закупки</div>
+    </div>
 </template>
 
 <script>
+// import { storeHub } from '@/stores/storeHub';
 // import { Progress } from 'flowbite-vue'
+import { mapMutations } from 'vuex';
+
 export default {
-    name: "ProductCardCreater"
+    name: "ProductCardCreater",
+    methods: {
+        ...mapMutations({
+            setPopup: 'setPopup',
+        }),
+        setPopupMut(){
+            localStorage.setItem('popup', 1)
+            // this.$store.commit('setPopup');
+            // this.setPopup()
+            // this.commit('increment', 10)
+        }
+    }
 }
+
 </script>
 
 <style scoped>
 
 .product {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
     color: rgba(75, 75, 75, 0.23);
-    width: 48%;
-    min-width: 320px;
+    padding: 10px;
+    /*width: 48%;*/
+    /*min-width: 320px;*/
     border: 2px solid rgba(163, 176, 160, 0.38);
     border-color: hsla(160, 100%, 37%, 1) !important;
     margin-right: 1%;
@@ -53,7 +78,7 @@ export default {
 
 @media (max-width: 768px) {
     .product {
-        width: 100%;
+        /*width: 100%;*/
         margin-right: 0px !important;
     }
 }
